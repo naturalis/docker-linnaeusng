@@ -5,18 +5,11 @@ services:
     env_file:
       - .env
     ports:
-     - "8080:80"
+     - "80:80"
     volumes:
      - "/data/linnaeus/www:/var/www/html"
     networks:
-      - web
       - default
-    labels:
-      - "traefik.backend=linnaeusng_backend"
-      - "traefik.docker.network=web"
-      - "traefik.enable=true"
-      - "traefik.port=8080"
-      - "traefik.frontend.rule=Host:linnaeus.naturalis.nl"
   db:
     image: "mysql"
     restart: "always"
@@ -28,7 +21,4 @@ services:
     - "/data/linnaeus/initdb:/docker-entrypoint-initdb.d"
     - "/data/linnaeus/db:/var/lib/mysql"
 
-# run docker network create web before
-networks:
-  web:
-    external: true
+
