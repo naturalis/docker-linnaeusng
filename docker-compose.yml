@@ -2,17 +2,20 @@ version: '3'
 services:
   linnaeus:
     image: "naturalis/linnaeus:0.0.1"
+    restart: unless-stopped
     env_file:
       - .env
     ports:
      - "80:80"
     volumes:
      - "/data/linnaeus/www:/var/www/html"
+     - "/var/log/apache2/linnaeusng_access.log:/var/log/apache2/linnaeusng_access.log"
+     - "/var/log/apache2/linnaeusng_error.log:/var/log/apache2/linnaeusng_error.log"
     networks:
       - default
   db:
     image: "mysql"
-    restart: "always"
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-blablabla}
     networks:
