@@ -9,8 +9,7 @@ services:
      - "80:80"
     volumes:
      - "/data/linnaeus/www:/var/www/html"
-     - "/var/log/apache2/linnaeusng_access.log:/var/log/apache2/linnaeusng_access.log"
-     - "/var/log/apache2/linnaeusng_error.log:/var/log/apache2/linnaeusng_error.log"
+     - "/var/log/apache2:/var/log/apache2"
     networks:
       - default
   db:
