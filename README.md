@@ -32,7 +32,7 @@ Instruction running docker-compose.yml
 -------------
 
 #### preparation
-- Copy .env.template to .env and adjust variables. 
+- Copy env.template to .env and adjust variables. 
 - Copy initdb directory to /data/linnaeus/initdb
 - Edit /data/linnaeus/initdb/1_init.sql and adjust PASSWORD to correct password set in .env
 
