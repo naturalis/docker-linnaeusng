@@ -30,7 +30,7 @@ chmod 777 -R /var/www/html/www/shared/media/project
 chmod 777 -R /var/www/html/log
 
 # run composer install
-php composer.phar install
+composer install
 
 # run server
 /usr/sbin/apache2ctl -D FOREGROUND
