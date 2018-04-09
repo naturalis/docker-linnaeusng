@@ -49,3 +49,21 @@ Usage
 
 ````
 
+Setting up the development environment
+-------------
+
+#### preparation
+- Install Docker or [Docker for Mac](https://docs.docker.com/docker-for-mac/)
+- Copy env.template to .env and adjust variables. 
+- Create a ./linnaeus directory
+- Copy initdb directory to ./linnaeus/initdb
+- Edit /data/linnaeus/initdb/1_init.sql and adjust PASSWORD to correct password set in .env
+- Clone the code of linneaus `git clone git@github.com:naturalis/linnaeus_ng.git ./linnaeus/www`
+- Start `docker-compose up` first without the 'd' to monitor what is happening
+- Connect to the database using your favorite database view (Sequel Pro) using 
+the variables in the  .env file
+- Upload a recent linnaeus database
+- Follow the instruction of the linneaus install to create the necessary composer projects and javascript/css files
+- Test the linneaus installation
+
+
