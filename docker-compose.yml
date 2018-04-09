@@ -8,8 +8,8 @@ services:
     ports:
      - "80:80"
     volumes:
-     - "/data/linnaeus/www:/var/www/html"
-     - "/data/linnaeus/apachelog:/var/log/apache2"
+     - "./linnaeus/www:/var/www/html"
+     - "./linnaeus/apachelog:/var/log/apache2"
     networks:
       - default
   db:
@@ -19,8 +19,10 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-blablabla}
     networks:
       - default
+    ports:
+      - "3307:3306"
     volumes:
-    - "/data/linnaeus/initdb:/docker-entrypoint-initdb.d"
-    - "/data/linnaeus/db:/var/lib/mysql"
+    - "./linnaeus/initdb:/docker-entrypoint-initdb.d"
+    - "./linnaeus/db:/var/lib/mysql"
 
 
