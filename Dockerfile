@@ -1,15 +1,19 @@
 FROM php:7.0-apache
 
 MAINTAINER Hugo van Duijn <hugo.vanduijn@naturalis.nl>
-LABEL Description="LAMP stack, based on Ubuntu 16.04 LTS. modified for naturalis linnaeusng application." 
+LABEL Description="LAMP stack, modified for naturalis linnaeusng application." 
 
 # Install required packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         openssh-client \
+        locales-all \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Install composer for PHP dependencies
+RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 # install and activate php and apache modules
 RUN docker-php-ext-install mysqli && \

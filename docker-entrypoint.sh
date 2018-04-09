@@ -29,5 +29,8 @@ chmod 777 -R /var/www/html/www/app/templates/cache
 chmod 777 -R /var/www/html/www/shared/media/project
 chmod 777 -R /var/www/html/log
 
+# run composer install
+php composer.phar install
+
 # run server
 /usr/sbin/apache2ctl -D FOREGROUND
