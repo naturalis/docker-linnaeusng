@@ -20,10 +20,14 @@ RUN docker-php-ext-install mysqli && \
 ADD linnaeus_repo.key /root/.ssh/id_rsa
 ADD config/php.ini /usr/local/etc/php/
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+ADD config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Add private key to id_rsa for github checkouts and clean html directory
 RUN ssh-keyscan github.com > ~/.ssh/known_hosts && \
     chmod 0600 ~/.ssh/id_rsa
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+
+FROM mysql 
+
+ADD config/my-linnaeus.cnf /etc/mysql/conf.d/my-linnaeus.cnf
