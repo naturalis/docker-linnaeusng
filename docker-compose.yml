@@ -8,8 +8,8 @@ services:
     ports:
      - "80:80"
     volumes:
-     - ./linnaeus/www:/var/www/html
-     - ./linnaeus/apachelog:/var/log/apache2
+     - ${BASE_PATH:-/data}/linnaeus/www:/var/www/html
+     - ${BASE_PATH:-/data}/linnaeus/apachelog:/var/log/apache2
     networks:
       - default
   db:
@@ -22,6 +22,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
-        - ./linnaeus/initdb:/docker-entrypoint-initdb.d
-        - ./linnaeus/db:/var/lib/mysql
+        - ${BASE_PATH:-/data}/linnaeus/initdb:/docker-entrypoint-initdb.d
+        - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
+        - ./my.conf.d:/etc/mysql/conf.d
 

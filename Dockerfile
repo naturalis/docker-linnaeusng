@@ -27,7 +27,3 @@ RUN ssh-keyscan github.com > ~/.ssh/known_hosts && \
     chmod 0600 ~/.ssh/id_rsa
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-
-FROM mysql 
-
-ADD config/my-linnaeus.cnf /etc/mysql/conf.d/my-linnaeus.cnf
