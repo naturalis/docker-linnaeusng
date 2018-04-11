@@ -7,8 +7,9 @@ LABEL Description="LAMP stack, based on Ubuntu 16.04 LTS. modified for naturalis
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         openssh-client \
-        && \
-    apt-get clean && \
+        vim
+RUN pecl install xdebug
+RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # install and activate php and apache modules

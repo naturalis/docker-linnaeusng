@@ -6,10 +6,11 @@ services:
     env_file:
       - .env
     ports:
-     - "80:80"
+      - "${WEB_PORT:-80}:80"
     volumes:
-     - ${BASE_PATH:-/data}/linnaeus/www:/var/www/html
-     - ${BASE_PATH:-/data}/linnaeus/apachelog:/var/log/apache2
+      - ./config:/root/config
+      - ${BASE_PATH:-/data}/linnaeus/www:/var/www/html
+      - ${BASE_PATH:-/data}/linnaeus/apachelog:/var/log/apache2
     networks:
       - default
   db:
@@ -20,7 +21,7 @@ services:
     networks:
       - default
     ports:
-      - "3307:3306"
+        - "${MYSQL_PORT:-3306}:3306"
     volumes:
         - ${BASE_PATH:-/data}/linnaeus/initdb:/docker-entrypoint-initdb.d
         - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
