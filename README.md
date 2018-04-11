@@ -65,4 +65,16 @@ the variables in the  .env file and port 3307
 - Follow the instruction of the linneaus install to create the necessary composer projects and javascript/css files
 - Test the linneaus installation in your browser
 
+Persistent volumes
+ - `"./linnaeus/www:/var/www/html"`  
+   Filled from repository https://github.com/naturalis/linnaeus when empty. 
+ - `"./linnaeus/apachelog:/var/log/apache2"`
+   apache access and error logs
+ - `"./linnaeus/initdb:/docker-entrypoint-initdb.d"`
+   initdb 
+ - `"./linnaeus/db:/var/lib/mysql"`
+   persistent mysql volume
+
+webserver runs on port 80
+databaseserver runs on port 3307
 
