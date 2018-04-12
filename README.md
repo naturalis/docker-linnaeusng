@@ -35,6 +35,7 @@ Instruction running docker-compose.yml
 - Copy env.template to .env and adjust variables. 
 - Copy initdb directory to /data/linnaeus/initdb
 - Edit /data/linnaeus/initdb/1_init.sql and adjust PASSWORD to correct password set in .env
+- Copy mysql_config_template to  /data/linnaeus/mysqlconf/custom_config.cfg
 
 
 ````

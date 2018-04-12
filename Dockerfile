@@ -1,7 +1,7 @@
 FROM php:7.0-apache
 
 MAINTAINER Hugo van Duijn <hugo.vanduijn@naturalis.nl>
-LABEL Description="LAMP stack, based on Ubuntu 16.04 LTS. modified for naturalis linnaeusng application." 
+LABEL Description="LAMP stack, modified for naturalis linnaeusng application." 
 
 # Install required packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -10,7 +10,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         vim
 RUN pecl install xdebug
 RUN apt-get clean && \
+        locales-all \
+        npm \
+        && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Install composer for PHP dependencies and create symlink for node to nodejs
+RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
+    ln -s /usr/bin/nodejs /usr/bin/node
+
 
 # install and activate php and apache modules
 RUN docker-php-ext-install mysqli && \

@@ -29,5 +29,15 @@ chmod 777 -R /var/www/html/www/app/templates/cache
 chmod 777 -R /var/www/html/www/shared/media/project
 chmod 777 -R /var/www/html/log
 
+# run composer install
+composer install
+
+# Install third party javascripts
+npm install --global gulp
+npm install --global bower
+npm install
+bower install --allow-root
+gulp
+
 # run server
 /usr/sbin/apache2ctl -D FOREGROUND
