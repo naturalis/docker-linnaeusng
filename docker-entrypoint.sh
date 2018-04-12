@@ -30,14 +30,16 @@ chmod 777 -R /var/www/html/www/shared/media/project
 chmod 777 -R /var/www/html/log
 
 # run composer install
+cd /var/www/html
 composer install
 
-# Install third party javascripts
-npm install --global gulp
-npm install --global bower
-npm install
-bower install --allow-root
-gulp
+# Install third party javascripts does not work (yet)
+#npm install --global bower
+#bower install --allow-root
+#npm install gulp
+#npm install browserify vinyl-source-stream vinyl-buffer gulp-concat gulp-uglifyes gulp-util gulp-modernizr
+#npm install
+#gulp
 
 # run server
 /usr/sbin/apache2ctl -D FOREGROUND

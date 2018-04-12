@@ -7,13 +7,12 @@ LABEL Description="LAMP stack, modified for naturalis linnaeusng application."
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         openssh-client \
-        vim
-RUN pecl install xdebug
-RUN apt-get clean && \
+        vim \
         locales-all \
         npm \
         && \
-    apt-get clean && \
+RUN pecl install xdebug
+RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install composer for PHP dependencies and create symlink for node to nodejs
