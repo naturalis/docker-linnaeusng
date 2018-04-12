@@ -27,14 +27,6 @@ services:
     ports:
         - "${MYSQL_EXTERNAL_PORT:-3306}:3306"
     volumes:
-<<<<<<< HEAD
+        - ${BASE_PATH:-/data}/mysqlconf:/etc/mysql/conf.d
         - ${BASE_PATH:-/data}/initdb:/docker-entrypoint-initdb.d
         - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
-        - ${BASE_PATH:-/data}/mysqlconf:/etc/mysql/conf.d
-=======
-    - "/data/linnaeus/mysqlconf:/etc/mysql/conf.d"
-    - "/data/linnaeus/initdb:/docker-entrypoint-initdb.d"
-    - "${BASE_PATH:-/data/linnaeus/db}:/var/lib/mysql"
-
->>>>>>> master
-
