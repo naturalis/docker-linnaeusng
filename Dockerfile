@@ -9,8 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         openssh-client \
         vim \
         locales-all \
-        npm \
-        && \
+        npm
 RUN pecl install xdebug
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
