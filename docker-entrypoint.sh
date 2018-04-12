@@ -1,12 +1,7 @@
 #!/bin/bash
 
 # clone repository 
-git clone -b development --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
-
-#setup xdebugging
-if [ -n "$DEV" ]; then
-/bin/cp config/xdebug.ini /usr/local/etc/php/conf.d
-fi
+git clone -b $GIT_BRANCH --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
 
 # copy default configs and modify password based on environment variables
 /bin/cp /var/www/html/configuration/app/default-configuration.php /var/www/html/configuration/app/configuration.php

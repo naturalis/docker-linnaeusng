@@ -25,7 +25,7 @@ Instruction building image
 -------------
 No special instructions
 ```
-docker build naturalis/linnaeusng:0.0.1 .
+docker build -t naturalis/linnaeusng:0.0.1 .
 ```
 
 Instruction running docker-compose.yml

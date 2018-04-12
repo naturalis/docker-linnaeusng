@@ -20,6 +20,7 @@ RUN docker-php-ext-install mysqli && \
 # add files into container
 ADD linnaeus_repo.key /root/.ssh/id_rsa
 ADD config/php.ini /usr/local/etc/php/
+ADD config/xdebug.ini /usr/local/etc/php/conf.d
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ADD config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
