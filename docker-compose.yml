@@ -22,6 +22,7 @@ services:
     volumes:
     - "/data/linnaeus/mysqlconf:/etc/mysql/conf.d"
     - "/data/linnaeus/initdb:/docker-entrypoint-initdb.d"
+    - "/data/linnaeus/mysqllog:/var/log/mysql"
     - "${BASE_PATH:-/data/linnaeus/db}:/var/lib/mysql"
 
 
