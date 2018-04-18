@@ -30,3 +30,4 @@ services:
         - ${BASE_PATH:-/data}/mysqlconf:/etc/mysql/conf.d
         - ${BASE_PATH:-/data}/initdb:/docker-entrypoint-initdb.d
         - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
+        - ${BASE_PATH:-/data}/linnaeus/mysqllog:/var/log/mysql
