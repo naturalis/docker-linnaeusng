@@ -31,7 +31,7 @@ chmod 777 -R /var/www/html/log
 
 # run composer install
 cd /var/www/html
-composer install
+COMPOSER_ALLOW_SUPERUSER=1;composer install
 
 # Install third party javascripts does not work (yet)
 #npm install --global bower
@@ -43,3 +43,5 @@ composer install
 
 # run server
 /usr/sbin/apache2ctl -D FOREGROUND
+
+echo "--- Linnaeus should be working now! ---";
