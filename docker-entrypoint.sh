@@ -29,6 +29,7 @@ chmod 777 -R /var/www/html/www/app/templates/cache
 chmod 777 -R /var/www/html/www/shared/media/project
 chmod 777 -R /var/www/html/log
 
+
 # run composer install
 cd /var/www/html
 /usr/local/bin/composer install
