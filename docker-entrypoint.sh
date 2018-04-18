@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # clone repository 
-git clone -b php7-phpstorm-inspection --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
+git clone -b $GIT_BRANCH --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
 
 # copy default configs and modify password based on environment variables
 /bin/cp /var/www/html/configuration/app/default-configuration.php /var/www/html/configuration/app/configuration.php
@@ -30,14 +30,15 @@ chmod 777 -R /var/www/html/www/shared/media/project
 chmod 777 -R /var/www/html/log
 
 # run composer install
-composer install
+cd /var/www/html
+/usr/local/bin/composer install
 
 # Install third party javascripts
-npm install --global gulp
-npm install --global bower
-npm install
-bower install --allow-root
-gulp
+/usr/bin/npm install --global bower
+/usr/bin/bower install --allow-root
+/usr/bin/npm install --global gulp 
+/usr/bin/npm install
+/usr/bin/gulp
 
 # run server
 /usr/sbin/apache2ctl -D FOREGROUND

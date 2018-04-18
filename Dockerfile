@@ -4,18 +4,19 @@ MAINTAINER Hugo van Duijn <hugo.vanduijn@naturalis.nl>
 LABEL Description="LAMP stack, modified for naturalis linnaeusng application." 
 
 # Install required packages
+RUN /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | /bin/bash - 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         openssh-client \
+        vim \
         locales-all \
-        npm \
+        nodejs \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install composer for PHP dependencies and create symlink for node to nodejs
-RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
-    ln -s /usr/bin/nodejs /usr/bin/node
+RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer 
 
 
 # install and activate php and apache modules

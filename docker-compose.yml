@@ -6,10 +6,11 @@ services:
     env_file:
       - .env
     ports:
-     - "80:80"
+      - "${WEB_EXTERNAL_PORT:-80}:80"
     volumes:
-     - "/data/linnaeus/www:/var/www/html"
-     - "/data/linnaeus/apachelog:/var/log/apache2"
+      - ./config:/root/config
+      - ${BASE_PATH:-/data}/linnaeus/www:/var/www/html
+      - ${BASE_PATH:-/data}/linnaeus/apachelog:/var/log/apache2
     networks:
       - default
   db:
@@ -17,12 +18,15 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-blablabla}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-linnaeus_ng}
+      MYSQL_USER: ${MYSQL_USER:-linnaeus_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-blablabla}
     networks:
       - default
+    ports:
+        - "${MYSQL_EXTERNAL_PORT:-3307}:3306"
     volumes:
-    - "/data/linnaeus/mysqlconf:/etc/mysql/conf.d"
-    - "/data/linnaeus/initdb:/docker-entrypoint-initdb.d"
-    - "/data/linnaeus/mysqllog:/var/log/mysql"
-    - "${BASE_PATH:-/data/linnaeus/db}:/var/lib/mysql"
-
-
+      - ${BASE_PATH:-/data}/mysqlconf:/etc/mysql/conf.d
+      - ${BASE_PATH:-/data}/initdb:/docker-entrypoint-initdb.d
+      - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
+      - ${BASE_PATH:-/data}/linnaeus/mysqllog:/var/log/mysql
