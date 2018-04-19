@@ -7,6 +7,7 @@ LABEL Description="LAMP stack, modified for naturalis linnaeusng application."
 RUN /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | /bin/bash - 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
+	libbz2-dev \
         openssh-client \
         vim \
         locales-all \
@@ -22,8 +23,8 @@ RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.p
 
 
 # install and activate php and apache modules
-RUN docker-php-ext-install mysqli && \
-    docker-php-ext-enable mysqli && \
+RUN docker-php-ext-install mysqli bz2 && \
+    docker-php-ext-enable mysqli bz2 && \
     a2enmod rewrite
 
 # add files into container
