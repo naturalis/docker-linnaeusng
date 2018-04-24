@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # clone repository 
-if ! [[ -e /var/www/html ]] ; then
+if ! [[ -e /var/www/html/.git ]] ; then
 
     git clone -b $GIT_BRANCH --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
 
