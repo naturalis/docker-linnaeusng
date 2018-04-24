@@ -31,12 +31,11 @@ if ! [[ -e /var/www/html/.git ]] ; then
     chmod 777 -R /var/www/html/www/shared/media/project
     chmod 777 -R /var/www/html/log
 
-
     # run composer install
     cd /var/www/html
     /usr/local/bin/composer install
 
-    # Install third party javascripts does not work (yet)
+    # Install third party javascripts
     /usr/bin/npm install --global bower
     /usr/bin/bower install --allow-root
     /usr/bin/npm install --global gulp 
