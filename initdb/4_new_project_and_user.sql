@@ -1,4 +1,4 @@
-USE linnaeus_ng
+USE linnaeus_ng;
 
 
 insert into projects
