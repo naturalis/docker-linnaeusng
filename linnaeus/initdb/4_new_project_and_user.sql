@@ -1,4 +1,4 @@
-USE linnaeus_ng
+USE linnaeus_ng;
 
 
 insert into projects
@@ -11,7 +11,7 @@ values
 insert into users
 	(id,username,password,first_name,last_name,email_address,active,last_login,logins,last_password_change,created_by,last_change,created) 
 values
-	(1,'sysadmin','48a365b4ce1e322a55ae9017f3daf0c0','sys','admin','sys@admin.com',1,null,0,null,-1,now(),now())
+	(1,'sysadmin',md5('sysadmin'),'sys','admin','sys@admin.com',1,null,0,null,-1,now(),now())
 ;
 
 
@@ -44,7 +44,7 @@ insert ignore into module_settings_values (id,project_id,setting_id,value,create
 	select null,1,id,'linnaeus@naturalis.nl',now(),now() from  module_settings where setting='support_email' and module_id=-1;
 
 insert ignore into module_settings_values (id,project_id,setting_id,value,created,last_change)
-	select null,1,id,'{"host":"smtp.gmail.com","smtp_auth":1,"username":"noreply@naturalis.nl","password":"h=LSq5g7","encryption":"ssl","port":465, "sender_mail" : "noreply@naturalis.nl", "sender_name" : "Linnaeus NG" }',now(),now() from  module_settings where setting='email_settings' and module_id=-1;
+	select null,1,id,'{"host":"smtp.gmail.com","smtp_auth":1,"username":"noreply@naturalis.nl","password":"","encryption":"ssl","port":465, "sender_mail" : "noreply@naturalis.nl", "sender_name" : "Linnaeus NG" }',now(),now() from  module_settings where setting='email_settings' and module_id=-1;
 
 insert ignore into module_settings_values (id,project_id,setting_id,value,created,last_change)
 	select null,1,id,'UA-21555206-6',now(),now() from  module_settings where setting='google_analytics_code' and module_id=-1;
