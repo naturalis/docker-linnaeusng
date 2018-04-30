@@ -3,6 +3,7 @@
 # clone repository 
 if ! [[ -e /var/www/html/.git ]] ; then
 
+    rm -rf /var/www/html
     git clone -b $GIT_BRANCH --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
 
     # copy default configs and modify password based on environment variables
