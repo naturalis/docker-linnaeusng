@@ -21,8 +21,8 @@ RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.p
 
 
 # install and activate php and apache modules
-RUN docker-php-ext-install gettext mysqli bz2 && \
-    docker-php-ext-enable gettext mysqli bz2 && \
+RUN docker-php-ext-install mysqli bz2 && \
+    docker-php-ext-enable mysqli bz2 && \
     a2enmod rewrite
 
 # add files into container
