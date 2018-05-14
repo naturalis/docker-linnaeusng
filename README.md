@@ -4,13 +4,13 @@ docker-linnaeusng
 Docker compose file and docker file for running linnaeus
 
 Persistent volumes
- - "/data/linnaeus/www:/var/www/html"  
+ - `/data/linnaeus/www:/var/www/html`  
    Filled from repository https://github.com/naturalis/linnaeus when empty. 
- - "/data/linnaeus/apachelog:/var/log/apache2"
+ - `/data/linnaeus/apachelog:/var/log/apache2`
    apache access and error logs
- - "/data/linnaeus/initdb:/docker-entrypoint-initdb.d"
+ - `/data/linnaeus/initdb:/docker-entrypoint-initdb.d`
    initdb 
- - "/data/linnaeus/db:/var/lib/mysql"
+ - `/data/linnaeus/db:/var/lib/mysql`
    persistent mysql volume
 
 webserver runs on port 80
@@ -24,6 +24,7 @@ Dockerfile creates the naturalis/linnaeusng container
 Instruction building image
 -------------
 No special instructions
+
 ```
 docker build -t naturalis/linnaeusng:0.0.1 .
 ```
@@ -42,13 +43,6 @@ Instruction running docker-compose.yml
 docker-compose up -d
 ````
 
-Usage
--------------
-
-````
-
-
-````
 
 Setting up the development environment
 -------------
@@ -78,4 +72,3 @@ Persistent volumes
 
 webserver runs on port 80
 databaseserver runs on port 3307
-
