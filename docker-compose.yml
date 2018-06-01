@@ -1,7 +1,7 @@
 version: '3'
 services:
   linnaeus:
-    image: "naturalis/linnaeus:0.0.1"
+    image: "naturalis/linnaeus:0.0.2"
     restart: unless-stopped
     env_file:
       - .env
@@ -14,7 +14,7 @@ services:
     networks:
       - default
   db:
-    image: "mysql:5.7"
+    image: "mysql:5.5"
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-blablabla}
