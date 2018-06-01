@@ -21,9 +21,18 @@ RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.p
 
 
 # install and activate php and apache modules
-RUN docker-php-ext-install mysqli bz2 && \
-    docker-php-ext-enable mysqli bz2 && \
+RUN docker-php-ext-install gettext mysqli bz2 opcache && \
+    docker-php-ext-enable gettext mysqli bz2 opcache && \
     a2enmod rewrite
+
+RUN { \
+		echo 'opcache.memory_consumption=128'; \
+		echo 'opcache.interned_strings_buffer=8'; \
+		echo 'opcache.max_accelerated_files=4000'; \
+		echo 'opcache.revalidate_freq=60'; \
+		echo 'opcache.fast_shutdown=1'; \
+		echo 'opcache.enable_cli=1'; \
+	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 # add files into container
 ADD linnaeus_repo.key /root/.ssh/id_rsa
