@@ -42,6 +42,7 @@ if ! [[ -e /var/www/html/.git ]] ; then
     /usr/bin/npm install --global gulp 
     /usr/bin/npm install
     /usr/bin/gulp
+
 fi
 
 # run server

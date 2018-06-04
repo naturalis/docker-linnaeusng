@@ -1,7 +1,7 @@
 version: '3'
 services:
   linnaeus:
-    image: "naturalis/linnaeus:0.0.1"
+    image: "naturalis/linnaeus-dev:0.0.1"
     restart: unless-stopped
     env_file:
       - .env
@@ -24,9 +24,9 @@ services:
     networks:
       - default
     ports:
-        - "${MYSQL_EXTERNAL_PORT:-3307}:3306"
+        - "${MYSQL_EXTERNAL_PORT:-3306}:3306"
     volumes:
-      - ${BASE_PATH:-/data}/linnaeus/mysqlconf:/etc/mysql/conf.d
-      - ${BASE_PATH:-/data}/linnaeus/initdb:/docker-entrypoint-initdb.d
-      - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
-      - ${BASE_PATH:-/data}/linnaeus/mysqllog:/var/log/mysql
+        - ${BASE_PATH:-/data}/linnaeus/mysqlconf:/etc/mysql/conf.d
+        - ${BASE_PATH:-/data}/linnaeus/initdb:/docker-entrypoint-initdb.d
+        - ${BASE_PATH:-/data}/linnaeus/db:/var/lib/mysql
+        - ${BASE_PATH:-/data}/linnaeus/mysqllog:/var/log/mysql

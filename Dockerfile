@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         openssh-client \
         vim \
         locales-all \
-        nodejs \
-        && \
-    apt-get clean && \
+        nodejs
+RUN pecl install xdebug
+RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install composer for PHP dependencies and create symlink for node to nodejs
@@ -37,8 +37,9 @@ RUN { \
 # add files into container
 ADD linnaeus_repo.key /root/.ssh/id_rsa
 ADD config/php.ini /usr/local/etc/php/
+ADD config/xdebug.ini /usr/local/etc/php/conf.d
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+ADD config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Add private key to id_rsa for github checkouts and clean html directory
 RUN ssh-keyscan github.com > ~/.ssh/known_hosts && \
