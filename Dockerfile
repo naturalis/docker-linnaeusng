@@ -4,16 +4,21 @@ MAINTAINER Hugo van Duijn <hugo.vanduijn@naturalis.nl>
 LABEL Description="LAMP stack, modified for naturalis linnaeusng application." 
 
 # Install required packages
-RUN /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | /bin/bash - 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        gnupg2 \
+        && \
+        /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | /bin/bash -  \
+        && \
+        apt-get install -y --no-install-recommends \
         git \
 	    libbz2-dev \
+	    libzip-dev \
         openssh-client \
         vim \
         locales-all \
-        nodejs
-RUN pecl install xdebug
-RUN apt-get clean && \
+        nodejs \
+        && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Install composer for PHP dependencies and create symlink for node to nodejs
@@ -21,8 +26,8 @@ RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.p
 
 
 # install and activate php and apache modules
-RUN docker-php-ext-install gettext mysqli bz2 opcache && \
-    docker-php-ext-enable gettext mysqli bz2 opcache && \
+RUN docker-php-ext-install gettext mysqli bz2 zip opcache && \
+    docker-php-ext-enable gettext mysqli bz2 zip opcache && \
     a2enmod rewrite
 
 RUN { \
@@ -37,7 +42,6 @@ RUN { \
 # add files into container
 ADD linnaeus_repo.key /root/.ssh/id_rsa
 ADD config/php.ini /usr/local/etc/php/
-ADD config/xdebug.ini /usr/local/etc/php/conf.d
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ADD config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
