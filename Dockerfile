@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         locales-all \
         nodejs \
         && \
+    pecl install xdebug \
+    && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -42,6 +44,7 @@ RUN { \
 # add files into container
 ADD linnaeus_repo.key /root/.ssh/id_rsa
 ADD config/php.ini /usr/local/etc/php/
+ADD config/xdebug.ini /usr/local/etc/php/conf.d
 ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 ADD config/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
