@@ -72,3 +72,20 @@ Persistent volumes
 
 webserver runs on port 80
 databaseserver runs on port 3307
+mailhog runs on 1025 
+and its webinterface on 8025
+
+##Mailhog
+
+To configure mailhog with your linnaeus project. You should set the following general settings.
+
+```
+UPDATE `module_settings` SET `default_value` = '{\"host\":\"mailhog\",\"smtp_auth\":0,\"username\":\"\",\"password\":\"\",\"encryption\":\"\",\"port\":1025, \"sender_mail\" : \"noreply@naturalis.nl\", \"sender_name\" : \"Linnaeus NG\" }' WHERE `id` = '97';
+```
+
+or use this json
+
+```
+{"host":"mailhog","smtp_auth":0,"username":"","password":"","encryption":"","port":1025, "sender_mail" : "noreply@naturalis.nl", "sender_name" : "Linnaeus NG" }
+```
+
