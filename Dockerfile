@@ -39,6 +39,7 @@ RUN { \
 		echo 'opcache.revalidate_freq=60'; \
 		echo 'opcache.fast_shutdown=1'; \
 		echo 'opcache.enable_cli=1'; \
+        echo 'opcache.enable=0'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 # add files into container
