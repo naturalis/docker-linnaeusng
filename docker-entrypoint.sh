@@ -3,7 +3,7 @@
 # clone repository 
 if ! [[ -e /var/www/html/.git ]] ; then
 
-    rm -rf /var/www/html
+    rm -rf /var/www/html/*
     git clone -b $GIT_BRANCH --single-branch git@github.com:naturalis/linnaeus_ng.git /var/www/html
 
     # copy default configs and modify password based on environment variables
@@ -37,10 +37,9 @@ if ! [[ -e /var/www/html/.git ]] ; then
     /usr/local/bin/composer install
 
     # Install third party javascripts
-    /usr/bin/npm install --global bower
-    /usr/bin/bower install --allow-root
-    /usr/bin/npm install --global gulp 
-    /usr/bin/npm install
+    /usr/bin/npm install --global yarn
+    /usr/bin/npm install --global gulp
+    /usr/bin/yarn
     /usr/bin/gulp
 
 fi
