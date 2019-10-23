@@ -37,10 +37,7 @@ if ! [[ -e /var/www/html/.git ]] ; then
     /usr/local/bin/composer install
 
     # Install third party javascripts
-    /usr/bin/npm install --global yarn
-    /usr/bin/npm install --global gulp
-    /usr/bin/yarn
-    /usr/bin/gulp
+    ./tools/scripts/gulp.sh
 
 fi
 
