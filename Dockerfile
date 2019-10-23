@@ -7,7 +7,7 @@ LABEL Description="LAMP stack, modified for naturalis linnaeusng application."
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gnupg2 \
         && \
-        /usr/bin/curl -sL https://deb.nodesource.com/setup_7.x | /bin/bash -  \
+        /usr/bin/curl -sL https://deb.nodesource.com/setup_10.x | /bin/bash -  \
         && \
         apt-get install -y --no-install-recommends \
         git \
