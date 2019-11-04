@@ -21,11 +21,8 @@ services:
   db:
     image: "mysql:5.7"
     restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-blablabla}
-      MYSQL_DATABASE: ${MYSQL_DATABASE:-linnaeus_ng}
-      MYSQL_USER: ${MYSQL_USER:-linnaeus_user}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-blablabla}
+    env_file:
+      - .env
     logging:
       driver: "json-file"
       options:
