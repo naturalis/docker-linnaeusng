@@ -1,7 +1,7 @@
 version: '3'
 services:
   linnaeus:
-    image: "naturalis/linnaeus:0.0.3"
+    image: "naturalis/linnaeus:0.0.4"
     restart: unless-stopped
     env_file:
       - .env
